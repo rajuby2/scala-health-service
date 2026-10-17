@@ -16,6 +16,7 @@ dependencies {
     implementation "org.scala-lang:scala-library:2.13.14"
     implementation "org.http4s:http4s-ember-server_${scalaBinaryVersion}:${http4sVersion}"
     implementation "org.http4s:http4s-dsl_${scalaBinaryVersion}:${http4sVersion}"
+    runtimeOnly "ch.qos.logback:logback-classic:1.5.12"
 
     testImplementation "org.scalatest:scalatest_${scalaBinaryVersion}:3.2.19"
 }
