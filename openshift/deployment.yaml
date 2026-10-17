@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scala-health-service
+  labels:
+    app: scala-health-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scala-health-service
+  template:
+    metadata:
+      labels:
+        app: scala-health-service
+    spec:
+      containers:
+        - name: scala-health-service
+          image: quay.io/rajuby2/scala-health-service:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 20

@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: scala-health-service
+spec:
+  to:
+    kind: Service
+    name: scala-health-service
+  port:
+    targetPort: 8080

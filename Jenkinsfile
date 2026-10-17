@@ -39,6 +39,7 @@ pipeline {
                     sh """
                         oc login --token=\$OC_TOKEN --server=${OC_SERVER}
                         oc project ${OC_NAMESPACE}
+                        oc apply -f openshift/
                         oc set image deployment/scala-health-service scala-health-service=${QUAY_REPO}:${IMAGE_TAG}
                         oc rollout status deployment/scala-health-service
                     """
