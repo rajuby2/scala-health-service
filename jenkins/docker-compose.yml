@@ -1,0 +1,13 @@
+services:
+  jenkins:
+    build: .
+    ports:
+      - "8080:8080"   # Jenkins UI
+      - "50000:50000" # inbound agent port (not needed for agent:any, harmless to expose)
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
